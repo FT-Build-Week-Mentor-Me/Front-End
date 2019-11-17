@@ -1,0 +1,60 @@
+.Top {
+  margin: 2% 0;
+  display: flex;
+}
+.Top-Left {
+  margin: auto 2%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.Top-Left .phone {
+  max-width: 100%;
+}
+.Top-Left .phone img {
+  width: 100%;
+}
+.Top-Left .holder {
+  display: flex;
+  justify-content: space-around;
+}
+.Top-Right {
+  margin: auto 2%;
+  width: 50%;
+}
+.Banner {
+  margin: 3% auto;
+  width: 100%;
+}
+.Banner img {
+  max-width: 100%;
+}
+body {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+h1 {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+  color: #1460aa;
+}
+p,
+a {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+  color: none;
+}
+.Nav-Bar {
+  display: flex;
+  justify-content: space-between;
+}
+.Nav-Bar nav {
+  width: 30%;
+  margin-top: 2%;
+  align-items: center;
+}
+.Nav-Bar nav a {
+  text-decoration: none;
+  margin: auto 2%;
+}
