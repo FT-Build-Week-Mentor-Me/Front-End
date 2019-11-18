@@ -9,7 +9,7 @@ const QuestionsForm = props => {
 
     return(
         <div>
-                <form onSubmit={props}>
+                <form onSubmit={props} key={props}>
                     <label htmlFor="title"></label>
                         <input
                         type="text"
