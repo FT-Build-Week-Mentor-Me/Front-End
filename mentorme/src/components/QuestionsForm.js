@@ -1,6 +1,6 @@
 import React from "react";
 
-const Questions = props => {
+const QuestionsForm = props => {
 
     const handleChange = e =>{
         props({...props, [e.target.name]: e.target.value});
@@ -45,4 +45,4 @@ const Questions = props => {
     )
     
 }
-export default Questions;
+export default QuestionsForm;
