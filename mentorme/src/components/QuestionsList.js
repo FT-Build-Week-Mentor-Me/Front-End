@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import {NavLink} from "react-router-dom";
 import SearchForm from "./SearchForm";
+import QuestionsForm from "./QuestionsForm";
 
 
 const QuestionsList = props => {
@@ -28,6 +29,17 @@ const changeHandler = e =>{
                         />
                     )
                 })}
+            </section>
+            <section>
+            {props.questions.map(question => {
+                    return(
+                        <QuestionsForm 
+                        key={question.id } 
+                        question={question}                    
+                        />
+                    )
+                })}
+                
             </section>
 
         </div>

@@ -1,10 +1,12 @@
 import React from "react";
+import Axios from "axios";
 
 const QuestionsForm = props => {
 
     const handleChange = e =>{
         props({...props, [e.target.name]: e.target.value});
     }
+
 
 
     return(
@@ -29,17 +31,15 @@ const QuestionsForm = props => {
 
 
                     <label htmlFor="category"></label>
-                        <select
+                        <input
+                        type="text"
                         name="category"
                         id="category"
                          onChange={handleChange}
                         // value={props.category}
-                        >
-                            <option value="option">option</option>
-                            <option value="option">option</option> 
-                            <option value="option">option</option> 
-                            <option value="option">option</option> 
-                        </select>
+                        />
+                
+                        
                 </form>
             </div>
     )
