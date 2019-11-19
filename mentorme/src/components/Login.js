@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { axiosWithAuth } from '../utils';
+<<<<<<< HEAD
 import { loginUser } from '../actions';
 
 
+=======
+import {Link} from 'react-router-dom';
+>>>>>>> 7ce1b0e953f6df814b7d8c1df5daacf484179053
 
 
 const Login = (props) => {
@@ -63,6 +67,9 @@ const Login = (props) => {
                 />
                 <button>Login</button>
             </form>
+            <button> 
+                <Link to={"/register"}> Register With Us!</Link>
+            </button>
         </div>
     )
 }
