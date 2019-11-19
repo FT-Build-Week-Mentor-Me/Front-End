@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
-import {Link} from 'react-router-dom';
 
 
-const Login = (props) => {
+const Register = (props) => {
     // console.log(props)
     const [input, setInput] = useState({
         username:'',
         email: '',
-        password: ''
+        password: '',
+
     });
 
     const changeHandler = e => {
@@ -18,21 +18,21 @@ const Login = (props) => {
         })
     }
 
-    const submitLogin = e => {
+    const submitRegister = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post('/login', input)
+            .post('/register', input)
             .then(res => {
-                console.log('Login Submit', res.data.token)
+                console.log('Register Submit', res.data.token)
                 localStorage.setItem('token', res.data.token)
                 props.history.push('/mentor')
             })
-            .catch(err => console.log('Login Error', err))
+            .catch(err => console.log('Register Error', err))
     }
 
     return (
         <div>
-            <form onSubmit={submitLogin}>
+            <form onSubmit={submitRegister}>
                 <input
                     type="text"
                     name="username"
@@ -40,7 +40,6 @@ const Login = (props) => {
                     value={input.username}
                     onChange={changeHandler}
                 />
-                <h2>OR</h2>
                 <input
                     type="text"
                     name="email"
@@ -55,13 +54,14 @@ const Login = (props) => {
                     value={input.password}
                     onChange={changeHandler}
                 />
-                <button>Login</button>
+                <select>
+                    <option value="mentor">Mentor</option>
+                    <option value="mentee">Mentee</option>
+                </select> 
+                <button>Register</button>
             </form>
-            <button> 
-                <Link to={"/register"}> Register With Us!</Link>
-            </button>
         </div>
     )
 }
 
-export default Login;
+export default Register;
