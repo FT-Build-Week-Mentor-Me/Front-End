@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useSelector, useDispatch} from 'react-redux'
+
+ import {fetchUserComment} from '../actions'
 
 const CommentForm = props => {
+    const commentState = useSelector(state => state.commentTest);
+    const dispatch = useDispatch()
 
     const handleChange = e =>{
         props({...props, [e.target.name]: e.target.value});
     }
 
+    useEffect(() => {
+        dispatch(fetchUserComment(3))
+    }, [])
+if(!commentState){
+    return <h2>LOADING</h2>
+}
 
     return(
         <div>
@@ -28,6 +39,12 @@ const CommentForm = props => {
                         />
                         <button>Submit</button>
                 </form>
+                {commentState.map(comment => {
+                    return (
+                    <div>
+                        <p>{comment.comment_text}</p>
+                    </div>
+                )})}
             </div>
     )
     

@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 // Components
 import Login from './components/Login';
 import MentorPage from './components/MentorPage';
+import Conversations from './components/Conversations';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Router>
               <Route exact path ="/" component={Login}/>
               <Route exact path ="/register" />
+              <Route exact path = "/comments" component={Conversations}/>
               <PrivateRoute path="/mentor" component={MentorPage}/>
           </Router>
       </div>
