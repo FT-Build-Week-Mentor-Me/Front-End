@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 
 // Components
 import Login from './components/Login';
-import QuestionsForm from './components/QuestionsForm';
+import MentorPage from './components/MentorPage';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Router>
               <Route exact path ="/" component={Login}/>
               <Route exact path ="/register" />
-              <PrivateRoute path="/mentor" component={QuestionsForm}/>
+              <PrivateRoute path="/mentor" component={MentorPage}/>
           </Router>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
+import { connect } from 'react-redux';
 
 
 const Conversations = props => {
@@ -38,4 +39,7 @@ const Conversations = props => {
         </div>
     )
 }
-export default Conversations;
+
+
+
+export default connect(mapStateToProps, {})(Conversations);
