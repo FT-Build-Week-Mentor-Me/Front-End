@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
 
+
 const Login = () => {
     const [input, setInput] = useState({
         username:'',
+        email: '',
         password: ''
     });
 
@@ -16,7 +18,14 @@ const Login = () => {
 
     const submitLogin = e => {
         e.preventDefault();
-
+        axiosWithAuth()
+            .post('/login', input)
+            .then(res => {
+                console.log('Login Submit', res.data.token)
+                localStorage.setItem('token', res.data.token)
+                e.history.push('/mentor')
+            })
+            .catch(err => console.log('Login Error', err))
     }
 
     return (
@@ -27,6 +36,14 @@ const Login = () => {
                     name="username"
                     placeholder="Username"
                     value={input.username}
+                    onChange={changeHandler}
+                />
+                <h2>OR</h2>
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={input.email}
                     onChange={changeHandler}
                 />
                 <input

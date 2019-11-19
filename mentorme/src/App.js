@@ -5,17 +5,19 @@ import PrivateRoute from './components/PrivateRoute';
 
 // Components
 import Login from './components/Login';
+import QuestionsForm from './components/QuestionsForm';
 
 function App() {
   return (
     <div className="App">
-        <Login/>
+        
         
         <div>
           <Router>
-              <Route exact path ="/login" />
+              <Login/>
+              <Route exact path ="/login" component={Login}/>
               <Route exact path ="/register" />
-              <PrivateRoute path="/mentor"/>
+              <PrivateRoute path="/mentor" component={QuestionsForm}/>
           </Router>
       </div>
     </div>
