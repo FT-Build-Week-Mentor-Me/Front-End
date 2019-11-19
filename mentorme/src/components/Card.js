@@ -8,7 +8,7 @@ const Card = props => {
 
         <div className="card">
 
-            <section key={}>
+            <section key={props.threadId}>
                 <h3>{props.title}</h3>
                 <p>{props.content}</p>
             </section>
