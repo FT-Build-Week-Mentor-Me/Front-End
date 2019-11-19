@@ -1,6 +1,8 @@
 import React from 'react';
 
 import './App.css';
+import DemoData from './components/DemoData';
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 function App() {

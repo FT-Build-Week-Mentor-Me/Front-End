@@ -10,7 +10,7 @@ const CommentForm = props => {
     return(
         <div>
                 <form onSubmit={props} key={props}>
-                    <label htmlFor="title"></label>
+                    <label htmlFor="title">Comment</label>
                         <input
                         type="text"
                         name="title"
@@ -18,7 +18,7 @@ const CommentForm = props => {
                          onChange={handleChange}
                         // value={props.title}
                         />
-                    <label htmlFor="question"></label>
+                    <label htmlFor="comment"></label>
                         <input
                         type ="text"
                         name="comment"
@@ -26,6 +26,7 @@ const CommentForm = props => {
                          onChange={handleChange}
                         // value={props.comment}
                         />
+                        <button>Submit</button>
                 </form>
             </div>
     )
