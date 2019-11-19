@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
 
 
-const Login = () => {
+const Login = (props) => {
+    console.log(props)
     const [input, setInput] = useState({
         username:'',
         email: '',
@@ -23,7 +24,7 @@ const Login = () => {
             .then(res => {
                 console.log('Login Submit', res.data.token)
                 localStorage.setItem('token', res.data.token)
-                e.history.push('/mentor')
+                props.history.push('/mentor')
             })
             .catch(err => console.log('Login Error', err))
     }
