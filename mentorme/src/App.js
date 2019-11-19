@@ -1,15 +1,24 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-import DemoData from './components/DemoData';
-import {BrowserRouter as Router} from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute';
 
+// Components
+import Login from './components/Login';
+import QuestionsForm from './components/QuestionsForm';
 
 function App() {
   return (
     <div className="App">
-
-
+        
+        
+        <div>
+          <Router>
+              <Route exact path ="/" component={Login}/>
+              <Route exact path ="/register" />
+              <PrivateRoute path="/mentor" component={QuestionsForm}/>
+          </Router>
+      </div>
     </div>
   );
 }
