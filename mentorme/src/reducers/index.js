@@ -15,7 +15,6 @@ const initialState = {
         title: '',
         comment: ''
     }, 
-    mentee: false,
     // profile_type: !mentor === mentee,
     isFetching: false,
     fetchingMessage: '',
@@ -26,7 +25,8 @@ const initialState = {
     credentials: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        profile_type: ['mentor', 'mentee']
     }, 
 }
 
