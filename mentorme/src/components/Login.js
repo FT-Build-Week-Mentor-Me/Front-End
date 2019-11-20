@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 import { axiosWithAuth } from '../utils';
-<<<<<<< HEAD
 import { loginUser } from '../actions';
 
 
-=======
-import {Link} from 'react-router-dom';
->>>>>>> 7ce1b0e953f6df814b7d8c1df5daacf484179053
 
 
 const Login = (props) => {

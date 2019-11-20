@@ -19,13 +19,13 @@ function DemoData(){
         })
     },[query])
 
-    useEffect(() => {
-        Axios.get(`https://mentor-me-web.herokuapp.com/api/comments/${id}`)
-        .then(res => {
-            setComments(res.data)
-            console.log("comments", res.data)
-        })
-    },[])
+    // useEffect(() => {
+    //     Axios.get(`https://mentor-me-web.herokuapp.com/api/comments/${comments.id}`)
+    //     .then(res => {
+    //         setComments( res.data)
+    //         console.log("comments", res.data)
+    //     })
+    // },[])
 
     return(
 

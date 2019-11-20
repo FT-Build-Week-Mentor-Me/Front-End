@@ -1,11 +1,20 @@
-import { AUTHORIZING, LOGIN_SUCCESS, GET_COMMENT_START,
-    GET_COMMENT,
-    GET_COMMENT_FAIL} from "../actions";
+import { AUTHORIZING, 
+        LOGIN_SUCCESS, 
+        GET_COMMENT_START, 
+        GET_COMMENT,
+        GET_COMMENT_FAIL, 
+        ADD_COMMENT_START, 
+        ADD_COMMENT_SUCCESS
+    } from "../actions";
 
 const initialState = {
     mentor: [],
     questions: [],
     comments: [],
+    addComment: {
+        title: '',
+        comment: ''
+    }, 
     mentee: false,
     // profile_type: !mentor === mentee,
     isFetching: false,
@@ -59,6 +68,15 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     error: action.payload,
                     isFetching: false
+                }
+            case ADD_COMMENT_START: 
+                return {
+                    ...state,
+                    isFetching: true
+                }
+            case ADD_COMMENT_SUCCESS:
+                return {
+                    ...state, 
                 }
         default:
             return state
