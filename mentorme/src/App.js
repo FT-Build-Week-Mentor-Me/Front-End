@@ -4,14 +4,16 @@ import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 
 // Components
+import Navbar from './components/layout/Navbar';
 import Login from './components/Login';
 import QuestionsForm from './components/QuestionsForm';
 import Register from './components/Register';
 
+
 function App() {
   return (
     <div className="App">
-        
+        <Navbar />
         
         <div>
           <Router>

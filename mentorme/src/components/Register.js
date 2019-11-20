@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
 
 
+
 const Register = (props) => {
     // console.log(props)
     const [input, setInput] = useState({
         username:'',
         email: '',
         password: '',
-
     });
 
     const changeHandler = e => {
@@ -31,8 +31,9 @@ const Register = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submitRegister}>
+        <div className="container">
+            <form onSubmit={submitRegister} className="white">
+            <h5 className="grey-text text-darken-3">Register with Us!</h5>
                 <input
                     type="text"
                     name="username"
@@ -58,7 +59,7 @@ const Register = (props) => {
                     <option value="mentor">Mentor</option>
                     <option value="mentee">Mentee</option>
                 </select> 
-                <button>Register</button>
+                <button className="btn grey z-depth-0">Register</button>
             </form>
         </div>
     )

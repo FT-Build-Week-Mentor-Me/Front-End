@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Login = (props) => {
@@ -31,8 +31,9 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submitLogin}>
+        <div className="container">
+            <form onSubmit={submitLogin} className="white">
+                <h5 className="grey-text text-darken-3">Sign In</h5>
                 <input
                     type="text"
                     name="username"
@@ -40,7 +41,6 @@ const Login = (props) => {
                     value={input.username}
                     onChange={changeHandler}
                 />
-                <h2>OR</h2>
                 <input
                     type="text"
                     name="email"
@@ -55,9 +55,9 @@ const Login = (props) => {
                     value={input.password}
                     onChange={changeHandler}
                 />
-                <button>Login</button>
+                <button className="btn grey z-depth-0">Login</button>
             </form>
-            <button> 
+            <button className="btn grey z-depth-0"> 
                 <Link to={"/register"}> Register With Us!</Link>
             </button>
         </div>
