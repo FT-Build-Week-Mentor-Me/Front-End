@@ -56,7 +56,7 @@ export const loginUser = (user, props) => dispatch => {
         .then(res => {
             console.log('Login Submit', res)
             localStorage.setItem('token', res.data.token)
-            props.history.push(`/comments`)
+            props.history.push(`/mentor`)
             dispatch({type: LOGIN_SUCCESS, payload: "Logged In"})
         })
         .catch(err => console.log('Login Error', err))

@@ -28,7 +28,7 @@ const Register = (props) => {
             .then(res => {
                 console.log('Register Submit', res.data.password)
                 localStorage.setItem('token', res.data.password)
-                props.history.push('/comments')
+                props.history.push('/mentor')
             })
             .catch(err => console.log('Register Error', err))
     }

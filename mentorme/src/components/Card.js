@@ -3,7 +3,7 @@ import {TweenMax, Power3 } from "gsap/all";
 
 const Card = props => {
     let cardContent = useRef(null)
-
+    console.log("Card Props", props.questions)
     useEffect(() => {
         TweenMax.to(
             cardContent,
@@ -16,9 +16,10 @@ const Card = props => {
 
         <div className="card"  ref={el => cardContent = el}>
 
-            <section key={props.threadId} >
-                <h3>{props.title}</h3>
-                <p>{props.content}</p>
+            <section key={props.questions.id} >
+                <h3>{props.questions.thread_title}</h3>
+                <h4>{props.questions.business_type}</h4>
+                <p>{props.questions.thread_body}</p>
             </section>
             
 

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+// Components 
+import QuestionList from './QuestionsList';
+import QuestionsForm from './QuestionsForm'
 
 const MentorPage = () => {
+
+
     return (
-        <div></div>
+        <div>
+            {/* <QuestionsForm/> */}
+            <QuestionList />
+        </div>
     )
 }
 
