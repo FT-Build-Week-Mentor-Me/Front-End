@@ -46,6 +46,7 @@ const Login = (props) => {
                     placeholder="Username"
                     value={props.username}
                     onChange={changeHandler}
+                    
                 />
                 <h2>OR</h2>
                 <input
@@ -54,6 +55,7 @@ const Login = (props) => {
                     placeholder="Email"
                     value={props.email}
                     onChange={changeHandler}
+                    
                 />
                 <input
                     type="password"
@@ -61,6 +63,7 @@ const Login = (props) => {
                     placeholder="Password"
                     value={props.password}
                     onChange={changeHandler}
+                    required
                 />
                 <button>Login</button>
             </form>

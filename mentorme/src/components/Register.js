@@ -42,6 +42,7 @@ const Register = (props) => {
                     placeholder="Username"
                     value={props.username}
                     onChange={changeHandler}
+                    required
                 />
                 <input
                     type="text"
@@ -49,6 +50,7 @@ const Register = (props) => {
                     placeholder="Email"
                     value={props.email}
                     onChange={changeHandler}
+                    required
                 />
                 <input
                     type="password"
@@ -56,6 +58,7 @@ const Register = (props) => {
                     placeholder="Password"
                     value={props.password}
                     onChange={changeHandler}
+                    required
                 />
                 <select>
                     <option value={props.profile_type}>Mentor</option>

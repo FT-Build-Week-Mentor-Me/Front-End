@@ -5,6 +5,7 @@ import React from "react";
 
 const SearchForm = props => {
     console.log('search form props',props)
+
     return(
         <div className="searchForm">
             <form>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect }from "react";
 import Card from "./Card";
-import { NavLink } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import { axiosWithAuth } from "../utils";
 
@@ -10,7 +9,7 @@ const QuestionsList = props => {
         questions: []
     })
 
-    // console.log(question)
+    
 
     useEffect(() => {
         console.log('in useEffect', question)
@@ -22,10 +21,8 @@ const QuestionsList = props => {
             })
             .catch(err => console.log("Link Error", err.response))
     }, [])
+    
 
-    // const changeHandler = e =>{
-    //     setQuery(e.target.value)
-    // }
     const removeQuestion = input => {
         console.log("this is id", question.questions)
 
@@ -39,14 +36,22 @@ const QuestionsList = props => {
             .catch(err => console.log('DELETE ERROR', err.response))
     }
 
+    const changeHandler = e =>{
+        // console.log('change handler props', props)
+        props.setQuery(e.target.value)
+    }
+
+    console.log("Question List props",props)
+
     return(
         <div className="questionListCont">
-            {/* <span>
+            <span>
                <SearchForm
                changeHandler={changeHandler}
-               query={question} 
+               query={props.query} 
+               setQuery={props.setQuery}
                /> 
-            </span> */}
+            </span>
             <section className="questionList">
                 {question.questions.map(thing => {
                     // console.log('This is thing', thing)
