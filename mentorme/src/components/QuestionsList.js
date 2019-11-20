@@ -7,8 +7,28 @@ import Card from "./Card";
 import QuestionsForm from './QuestionsForm'
 
 
+const initialState = {
+    thread_title: '',
+    thread_body: '',
+    business_type: '',
+    author_id: 2, 
+    extra_data: ''
+}
+
 const QuestionsList = props => {
     const[question, setQuestion] = useState([])
+    const[list, setList] = useState(initialState)
+    
+    const handleSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .post('/new-thread', list)
+            .then(res => {
+                console.log("Questions Form Submit", res)
+                setQuestion([...question, list])
+            })
+            .catch(err => console.log("SUBMIT ERROR", err))
+    }
 
     useEffect(() => {
         console.log('in useEffect', question)
@@ -19,7 +39,7 @@ const QuestionsList = props => {
                 setQuestion(res.data)
             })
             .catch(err => console.log("Link Error", err.response))
-    }, [])
+    }, [list])
     
 
     const removeQuestion = input => {
@@ -35,6 +55,10 @@ const QuestionsList = props => {
             .catch(err => console.log('DELETE ERROR', err.response))
     }
 
+
+
+
+
     const changeHandler = e =>{
         // console.log('change handler props', props)
         props.setQuery(e.target.value)
@@ -44,7 +68,7 @@ const QuestionsList = props => {
 
     return(
         <div className="questionListCont">
-            <QuestionsForm question={question} setQuestion={setQuestion}/>
+            <QuestionsForm question={question} setQuestion={setQuestion} list={list} setList={setList} handleSubmit={handleSubmit}/>
             <span>
                <SearchForm
                changeHandler={changeHandler}
@@ -57,7 +81,7 @@ const QuestionsList = props => {
                     // console.log('This is thing', thing)
                     return(
                         <div key={thing.id}>
-                            <Card question={thing} />
+                            <Card key={thing.id} question={thing} />
                             <button onClick={() => removeQuestion(thing)}> 
                                 Remove Question
                             </button>
