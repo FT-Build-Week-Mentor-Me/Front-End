@@ -1,7 +1,10 @@
 import React, { useState, useEffect }from "react";
-import Card from "./Card";
 import SearchForm from "./SearchForm";
 import { axiosWithAuth } from "../utils";
+
+// COMPONENTS
+import Card from "./Card";
+import QuestionsForm from './QuestionsForm'
 
 
 const QuestionsList = props => {
@@ -45,6 +48,7 @@ const QuestionsList = props => {
 
     return(
         <div className="questionListCont">
+            <QuestionsForm />
             <span>
                <SearchForm
                changeHandler={changeHandler}

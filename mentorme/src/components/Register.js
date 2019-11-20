@@ -30,7 +30,7 @@ const Register = (props) => {
                 localStorage.setItem('username', res.data.username)
                 localStorage.setItem('password', res.data.password)
                 localStorage.setItem('email', res.data.email)
-                props.history.push('/mentor')
+                props.history.push('/')
             })
             .catch(err => console.log('Register Error', err))
     }

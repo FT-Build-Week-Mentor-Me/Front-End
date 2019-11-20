@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils';
 
+
+const initialState = [{
+    thread_title: '',
+    thread_body: '',
+    business_type: '',
+    author_id: 2, 
+    extra_data: ''
+}]
+
 const QuestionsForm = () => {
-    const [list, setList] = useState({
-        thread_title: '',
-        thread_body: '',
-        business_type: '',
-        author_id: 2,
-        extra_data: ''
+    const [list, setList] = useState(initialState)
+    const[question, setQuestion] = useState({
+        questions: []
     })
 
     const handleSubmit = e => {
@@ -16,9 +22,9 @@ const QuestionsForm = () => {
             .post('/new-thread', list)
             .then(res => {
                 console.log("Questions Form Submit", res)
-                setList([...list, list])
+                setQuestion([...question.questions, list])
             })
-            .catch(err => console.log("SUBMIT ERROR", err.response))
+            .catch(err => console.log("SUBMIT ERROR", err))
     }
 
     const handleChanges = e => {
