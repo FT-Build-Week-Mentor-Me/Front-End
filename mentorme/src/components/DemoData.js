@@ -29,12 +29,12 @@ function DemoData(){
 
     return(
 
-        <div className="questionList">
+        <div className="appQuestionList">
             <section>
             
                         <div>
                             <Route
-                            
+                            exact
                             path="/questions"
                             render={props =>
                                 <QuestionsList

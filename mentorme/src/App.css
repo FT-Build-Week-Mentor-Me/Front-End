@@ -20,3 +20,55 @@
 .App-link {
   color: #09d3ac;
 }
+
+.appQuestionList{
+  border: 2px solid red;
+
+  margin: 2% 2% 2% 2%;
+  padding: 2% 2% 2% 2%;
+}
+
+.questionListCont{
+  border: 2px solid black;
+  margin: 2% 2% 2% 2%;
+  padding: 2% 2% 2% 2%;
+  
+
+}
+
+.questionList{
+  border: 2px solid purple;
+  margin: 1% 2% 1% 2%;
+  padding: 0% 2% 0% 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  /* background-color: #09d3ac; */
+}
+
+.linkClass{
+  width: 70%;
+  margin: 1% 2% 1% 14%;
+  padding: 0% 2% 1% 2%;
+  border: 2px solid yellow;
+  
+
+  
+}
+.linkClass div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2% 2% 2% 2%;
+}
+
+.card{
+  width: 90%;
+  border: 10px solid green;
+  margin: 2% 2% 2% 2%;
+  padding: 0% 2% 0% 2%;
+  
+  /* background-color: #B3A394 ; */
+}
+
