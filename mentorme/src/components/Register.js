@@ -26,8 +26,10 @@ const Register = (props) => {
         axiosWithAuth()
             .post('/register', credentials)
             .then(res => {
-                console.log('Register Submit', res.data.password)
-                localStorage.setItem('token', res.data.password)
+                console.log('Register Submit', res)
+                localStorage.setItem('username', res.data.username)
+                localStorage.setItem('password', res.data.password)
+                localStorage.setItem('email', res.data.email)
                 props.history.push('/mentor')
             })
             .catch(err => console.log('Register Error', err))
