@@ -8,11 +8,7 @@ import QuestionsForm from './QuestionsForm'
 
 
 const QuestionsList = props => {
-    const[question, setQuestion] = useState({
-        questions: []
-    })
-
-    
+    const[question, setQuestion] = useState([])
 
     useEffect(() => {
         console.log('in useEffect', question)
@@ -20,21 +16,21 @@ const QuestionsList = props => {
             .get('/threads', question)
             .then(res => {
                 console.log("Question Link Res", res.data)
-                setQuestion({questions: res.data})
+                setQuestion(res.data)
             })
             .catch(err => console.log("Link Error", err.response))
     }, [])
     
 
     const removeQuestion = input => {
-        console.log("this is id", question.questions)
+        console.log("this is id", question)
 
         // const trim = question.questions;
         axiosWithAuth()
             .delete(`/${input.id}/thread`, question)
             .then(res => {
                 console.log('DELETE IS WORKING', res)
-                setQuestion(question.questions.filter(click => click.id !== input.id))
+                setQuestion(question.filter(click => click.id !== input.id))
             })
             .catch(err => console.log('DELETE ERROR', err.response))
     }
@@ -48,7 +44,7 @@ const QuestionsList = props => {
 
     return(
         <div className="questionListCont">
-            <QuestionsForm />
+            <QuestionsForm question={question} setQuestion={setQuestion}/>
             <span>
                <SearchForm
                changeHandler={changeHandler}
@@ -57,11 +53,11 @@ const QuestionsList = props => {
                /> 
             </span>
             <section className="questionList">
-                {question.questions.map(thing => {
+                {question.map(thing => {
                     // console.log('This is thing', thing)
                     return(
                         <div key={thing.id}>
-                            <Card questions={thing} />
+                            <Card question={thing} />
                             <button onClick={() => removeQuestion(thing)}> 
                                 Remove Question
                             </button>
