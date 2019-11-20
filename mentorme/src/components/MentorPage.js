@@ -9,7 +9,7 @@ const MentorPage = () => {
 
     return (
         <div>
-            {/* <QuestionsForm/> */}
+            <QuestionsForm/>
             <QuestionList />
         </div>
     )

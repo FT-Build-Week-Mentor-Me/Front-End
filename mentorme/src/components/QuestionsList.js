@@ -10,7 +10,7 @@ const QuestionsList = props => {
         questions: []
     })
 
-    console.log(question)
+    // console.log(question)
 
     useEffect(() => {
         console.log('in useEffect', question)
@@ -24,23 +24,39 @@ const QuestionsList = props => {
     }, [])
 
     // const changeHandler = e =>{
-    //     setQuestion(e.target.value)
+    //     setQuery(e.target.value)
     // }
+    const removeQuestion = input => {
+        console.log("this is id", question.questions)
+
+        // const trim = question.questions;
+        axiosWithAuth()
+            .delete(`/${input.id}/thread`, question)
+            .then(res => {
+                console.log('DELETE IS WORKING', res)
+                setQuestion(question.questions.filter(click => click.id !== input.id))
+            })
+            .catch(err => console.log('DELETE ERROR', err.response))
+    }
 
     return(
-
         <div className="questionListCont">
             {/* <span>
                <SearchForm
                changeHandler={changeHandler}
-               query={question.query} 
+               query={question} 
                /> 
             </span> */}
             <section className="questionList">
                 {question.questions.map(thing => {
-                    console.log('This is thing', thing)
+                    // console.log('This is thing', thing)
                     return(
-                        <Card questions={thing} key={thing.id}/>
+                        <div key={thing.id}>
+                            <Card questions={thing} />
+                            <button onClick={() => removeQuestion(thing)}> 
+                                Remove Question
+                            </button>
+                        </div>
                         // <QuestionLink 
                         // key={questions.id } 
                         // question={questions}                      
