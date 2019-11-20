@@ -40,7 +40,8 @@ function QuestionLink  ({question}, props){
     const {author_id, id,thread_title, thread_body} = question;
 
         return(
-            <NavLink to ={`/questions/${id}`}>
+            <div className="linkClass">
+                <NavLink to ={`/questions/${id}`}>
                 <div>
                 <Card
                         authorId={author_id}
@@ -50,6 +51,8 @@ function QuestionLink  ({question}, props){
                         />
                 </div>
             </NavLink>
+            </div>
+            
         )
 }
 
