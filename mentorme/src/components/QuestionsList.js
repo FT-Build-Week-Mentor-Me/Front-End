@@ -48,8 +48,19 @@ const QuestionsList = props => {
 
     const saveEdit = e => {
         e.preventDefault();
+        console.log("Edit Log", edit)
         axiosWithAuth()
-            .put(`//thread`)
+            .put(`/${edit.id}/thread`, edit)
+            .then(res => {
+                console.log("SAVE EDIT RES", res)
+                setQuestion(
+                    question.map(change => {
+                        if(change.id === edit.id){
+                            return res.data
+                        } else return change
+                    }))
+                window.location.reload()
+            })
     }
     
 
@@ -76,7 +87,7 @@ const QuestionsList = props => {
     //     props.setQuery(e.target.value)
     // }
     const handleChange = e => {
-        setList({...list, [e.target.name]: e.target.value});
+        setEdit({...edit, [e.target.name]: e.target.value});
     }
 
 
@@ -84,14 +95,14 @@ const QuestionsList = props => {
         <div className="questionListCont">
             <QuestionsForm question={question} setQuestion={setQuestion} list={list} setList={setList} handleSubmit={handleSubmit}/>
             <section className="editForm">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={saveEdit}>
                     <label htmlFor="title"></label>
                         <input
                         type="text"
                         name="thread_title"
                         placeholder="Title"
                         onChange={handleChange}
-                        value={list.thread_title}
+                        value={edit.thread_title}
                         />
                     <label htmlFor="business-type"></label>
                         <input
@@ -100,7 +111,7 @@ const QuestionsList = props => {
                         id="business-type"
                         placeholder="Business Type"
                         onChange={handleChange}
-                        value={list.business_type}
+                        value={edit.business_type}
                         />                   
                     <label htmlFor="question"></label>
                         <input
@@ -109,7 +120,7 @@ const QuestionsList = props => {
                         id="question"
                         placeholder="Question"
                         onChange={handleChange}
-                        value={list.thread_body}
+                        value={edit.thread_body}
                         />
                     {/* <label htmlFor="question"></label>
                         <input
@@ -133,13 +144,13 @@ const QuestionsList = props => {
                 {question.map(thing => {
                     // console.log('This is thing', thing)
                     return(
-                        <div key={thing.id}>
+                        <div key={thing.thing}>
                             {/* <QuestionLink question={thing}/> */}
                             <Card question={thing} />
                             <button onClick={() => removeQuestion(thing)}> 
                                 Remove Question
                             </button>
-                            <button onClick={() => removeQuestion(thing)}> 
+                            <button onClick={() => setEdit(thing)}> 
                                 Edit
                             </button>
                         </div>
