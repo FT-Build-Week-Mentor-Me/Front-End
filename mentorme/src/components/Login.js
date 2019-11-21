@@ -38,8 +38,9 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submitLogin}>
+        <div className="container">
+            <form onSubmit={submitLogin} className="white">
+                <h5 className="grey-text">Login</h5>
                 <input
                     type="text"
                     name="username"
@@ -48,7 +49,6 @@ const Login = (props) => {
                     onChange={changeHandler}
                     
                 />
-                <h2>OR</h2>
                 <input
                     type="text"
                     name="email"
@@ -65,9 +65,9 @@ const Login = (props) => {
                     onChange={changeHandler}
                     required
                 />
-                <button>Login</button>
+                <button className="btn grey">Login</button>
             </form>
-            <button> 
+            <button className="btn grey white-text"> 
                 <Link to={"/register"}> Register With Us!</Link>
             </button>
         </div>

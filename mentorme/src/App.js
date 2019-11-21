@@ -7,6 +7,7 @@ import Axios from "axios";
 
 
 // Components
+import NavBar from './components/layout/NavBar';
 import Login from './components/Login';
 import MentorPage from './components/MentorPage';
 import Conversations from './components/Conversations';
@@ -14,19 +15,20 @@ import Register from './components/Register';
 import QuestionsList from "./components/QuestionsList";
 
 
-function App() {
-  const[questions, setQuestions] =useState([]);
-  const[comments, setComments] =useState([]);
-  const[query, setQuery] = useState("");
 
-  useEffect(() => {
-      Axios.get('https://mentor-me-web.herokuapp.com/api/threads')
-      .then(res => {
-          const questionsQuery = res.data.filter(search => 
-              search.thread_title.toLowerCase().includes(query.toLowerCase()));
-              setQuestions(questionsQuery);
-      })
-  },[query])
+function App() {
+const[questions, setQuestions] =useState([]);
+const[comments, setComments] =useState([]);
+const[query, setQuery] = useState("");
+
+useEffect(() => {
+    Axios.get('https://mentor-me-web.herokuapp.com/api/threads')
+    .then(res => {
+        const questionsQuery = res.data.filter(search => 
+            search.thread_title.toLowerCase().includes(query.toLowerCase()));
+            setQuestions(questionsQuery);
+    })
+},[query])
 
     // useEffect(() => {
     //     Axios.get(`https://mentor-me-web.herokuapp.com/api/comments/${comments.id}`)
@@ -39,8 +41,9 @@ function App() {
 
 
 
-  return (
+return (
     <div className="App">
+        <NavBar />
         <div className="appQuestionList">
         <section>
                 <div>
@@ -70,12 +73,12 @@ function App() {
         </section>
     </div>
         <div>
-          <Router>
-              <Route exact path ="/" component={Login}/>
-              <Route exact path ="/register" component={Register}/>
+        <Router>
+            <Route exact path ="/" component={Login}/>
+            <Route exact path ="/register" component={Register}/>
               {/* <Route exact path = "/comments" render= {props => (<Conversations {...props}/>)}/> */}
-              <PrivateRoute path="/mentor" component={MentorPage}/>
-              <Route
+            <PrivateRoute path="/mentor" component={MentorPage}/>
+            <Route
                     exact
                     path="/questions"
                     render={props =>
