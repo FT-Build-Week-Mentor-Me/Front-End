@@ -72,11 +72,10 @@ export const addComment = (user) => dispatch => {
         .then(res => {
             console.log('Res for add Comment', res)
             dispatch({ type: ADD_COMMENT_SUCCESS, payload: res.data })
+            window.location.reload()
         })
         .catch( err => {
             dispatch({ type: GET_COMMENT_FAIL, payload: err.response})
         })
 }
 // DELETE ACTIONS
-
-
