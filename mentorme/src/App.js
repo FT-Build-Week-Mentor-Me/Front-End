@@ -7,12 +7,13 @@ import Axios from "axios";
 
 
 // Components
-import NavBar from './components/layout/NavBar';
+import NavBar from './components/NavBar';
 import Login from './components/Login';
 import MentorPage from './components/MentorPage';
 import Conversations from './components/Conversations';
 import Register from './components/Register';
 import QuestionsList from "./components/QuestionsList";
+import SignedOutLink from './components/SignedOutLink'
 
 
 
@@ -44,40 +45,12 @@ useEffect(() => {
 return (
     <div className="App">
         <NavBar />
-        <div className="appQuestionList">
-        <section>
-                <div>
-                    {/* <Route
-                    exact
-                    path="/questions"
-                    render={props =>
-                        <QuestionsList
-                        {...props}
-                        questions={questions}
-                        query={query}
-                        setQuery={setQuery}
-                        />}
-                    />
-                    <Route
-                    path="/questions/:id"
-                    render={props =>
-                        <Conversations
-                        {...props}
-                        questions={questions}
-                        comments={comments}
-                        query={query}
-                        setQuery={setQuery}
-                        />}
-                    /> */}
-                </div>                       
-        </section>
-    </div>
         <div>
         <Router>
             <Route exact path ="/" component={Login}/>
             <Route exact path ="/register" component={Register}/>
               {/* <Route exact path = "/comments" render= {props => (<Conversations {...props}/>)}/> */}
-            <PrivateRoute path="/mentor" component={MentorPage}/>
+            <PrivateRoute exact path="/mentor" component={MentorPage}/>
             <Route
                     exact
                     path="/questions"

@@ -14,7 +14,7 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
 <Provider store={store}>
-    <Router>
+    <Router forceRefresh={true}>
         <App />
     </Router>
 </Provider> 
