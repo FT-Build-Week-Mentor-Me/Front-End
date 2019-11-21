@@ -12,8 +12,9 @@ const Card = props => {
         )
     },[])
 
-    const trim = props.questions;
+    const trim = props.question;
     
+
     return(
         <NavLink to = {`/questions/${trim.id}`}>
             <div className="card"  ref={el => cardContent = el}>
