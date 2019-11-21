@@ -3,6 +3,7 @@ import { axiosWithAuth } from '../utils';
 import { connect } from 'react-redux';
 
 
+
 const Register = (props) => {
     // console.log(props)
     const [credentials, setCredentials] = useState({
@@ -36,8 +37,9 @@ const Register = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={submitRegister}>
+        <div className="container">
+            <form onSubmit={submitRegister} className="white">
+            <h5 className="grey-text text-darken-3">Register with Us!</h5>
                 <input
                     type="text"
                     name="username"
@@ -66,7 +68,7 @@ const Register = (props) => {
                     <option value={props.profile_type}>Mentor</option>
                     <option value={props.profile_type}>Mentee</option>
                 </select> 
-                <button>Register</button>
+                <button className="btn grey z-depth-0">Register</button>
             </form>
         </div>
     )

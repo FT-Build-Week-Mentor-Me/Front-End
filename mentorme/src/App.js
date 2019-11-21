@@ -7,11 +7,13 @@ import Axios from "axios";
 
 
 // Components
+import Navbar from './components/layout/Navbar';
 import Login from './components/Login';
 import MentorPage from './components/MentorPage';
 import Conversations from './components/Conversations';
 import Register from './components/Register';
 import QuestionsList from "./components/QuestionsList";
+
 
 
 function App() {
