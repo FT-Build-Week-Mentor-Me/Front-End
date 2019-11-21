@@ -10,7 +10,6 @@ const Register = (props) => {
         email: '',
         password: '',
         profile_type: 'mentor'
-
     });
 
     const changeHandler = e => {
