@@ -92,6 +92,7 @@ const QuestionsList = props => {
 
 
     return(
+        <div className="container">
         <div className="questionListCont">
             <QuestionsForm question={question} setQuestion={setQuestion} list={list} setList={setList} handleSubmit={handleSubmit}/>
             <section className="editForm">
@@ -130,7 +131,7 @@ const QuestionsList = props => {
                         onChange={handleChange}
                         value={thread.thread_body}
                         /> */}
-                    <button>Edit Question</button>
+                    <button className="btn">Edit Question</button>
             </form>
             </section>
             {/* <span>
@@ -147,10 +148,10 @@ const QuestionsList = props => {
                         <div key={thing.thing}>
                             {/* <QuestionLink question={thing}/> */}
                             <Card question={thing} />
-                            <button onClick={() => removeQuestion(thing)}> 
+                            <button className="btn" onClick={() => removeQuestion(thing)}> 
                                 Remove Question
                             </button>
-                            <button onClick={() => setEdit(thing)}> 
+                            <button className="btn" onClick={() => setEdit(thing)}> 
                                 Edit
                             </button>
                         </div>
@@ -161,6 +162,7 @@ const QuestionsList = props => {
                     )
                 })}
             </section>
+        </div>
         </div>
     )
 }

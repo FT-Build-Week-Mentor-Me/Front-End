@@ -35,7 +35,7 @@ const QuestionsForm = ({ question, setQuestion, list, setList, handleSubmit }) =
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form">
                 <label htmlFor="title"></label>
                     <input
                     type="text"
@@ -70,7 +70,7 @@ const QuestionsForm = ({ question, setQuestion, list, setList, handleSubmit }) =
                     onChange={handleChange}
                     value={thread.thread_body}
                     /> */}
-                <button>Submit Question</button>
+                <button className="btn">Submit Question</button>
             </form>
         </div>
     )

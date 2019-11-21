@@ -1,50 +1,45 @@
-.App {
-  text-align: center;
+html{
+  min-height: 100%;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background: url(/img/background.jpg) top right no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+form{
+  width: 60%;
+  padding: 20px;
+  background: white;
+  margin: 2%;
 }
 
-.App-logo {
-  height: 40vmin;
+button{
+  margin: 1%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn{
+  margin: 2%;
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
-}
 
-.appQuestionList{
-  border: 2px solid red;
-
-  margin: 2% 2% 2% 2%;
-  padding: 2% 2% 2% 2%;
+.container{
+  width: 80%;
 }
 
 .questionListCont{
-  border: 2px solid black;
   margin: 2% 2% 2% 2%;
   padding: 2% 2% 2% 2%;
-  
-
 }
 
 .questionList{
-  border: 2px solid purple;
-  margin: 1% 2% 1% 2%;
-  padding: 0% 2% 0% 2%;
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  
-  /* background-color: #09d3ac; */
 }
 
 .linkClass{
@@ -65,10 +60,9 @@
 
 .card{
   width: 90%;
-  border: 10px solid green;
+  border: 2px solid black;
   margin: 2% 2% 2% 2%;
   padding: 0% 2% 0% 2%;
-  
-  /* background-color: #B3A394 ; */
+  color: white;
 }
 

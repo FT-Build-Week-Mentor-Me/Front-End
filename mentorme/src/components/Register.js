@@ -10,7 +10,6 @@ const Register = (props) => {
         email: '',
         password: '',
         profile_type: 'mentor'
-
     });
 
     const changeHandler = e => {
@@ -36,8 +35,9 @@ const Register = (props) => {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={submitRegister}>
+                <h5>Register With Us!</h5>
                 <input
                     type="text"
                     name="username"
@@ -66,7 +66,7 @@ const Register = (props) => {
                     <option value={props.profile_type}>Mentor</option>
                     <option value={props.profile_type}>Mentee</option>
                 </select> 
-                <button>Register</button>
+                <button className="btn">Register</button>
             </form>
         </div>
     )
