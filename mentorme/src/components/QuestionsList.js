@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from "react";
 import SearchForm from "./SearchForm";
 import { axiosWithAuth } from "../utils";
-
+import {NavLink} from 'react-router-dom'
 // COMPONENTS
 import Card from "./Card";
 import QuestionsForm from './QuestionsForm'
@@ -16,19 +16,11 @@ const initialState = {
 }
 
 const QuestionsList = props => {
-    const[question, setQuestion] = useState([])
-    const[list, setList] = useState(initialState)
+    const[question, setQuestion] = useState([]) // GET REQUEST FOR ALL STORED QUESTIONS
+    const[list, setList] = useState(initialState) // USED WITH INITIAL STATE
+    const[edit, setEdit] = useState(initialState) // PUT REQUEST
+
     
-    const handleSubmit = e => {
-        e.preventDefault();
-        axiosWithAuth()
-            .post('/new-thread', list)
-            .then(res => {
-                console.log("Questions Form Submit", res)
-                setQuestion([...question, list])
-            })
-            .catch(err => console.log("SUBMIT ERROR", err))
-    }
 
     useEffect(() => {
         console.log('in useEffect', question)
@@ -39,7 +31,26 @@ const QuestionsList = props => {
                 setQuestion(res.data)
             })
             .catch(err => console.log("Link Error", err.response))
-    }, [list])
+    }, [])
+    
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .post('/new-thread', list)
+            .then(res => {
+                console.log("Questions Form Submit", res)
+                setQuestion([...question, list])
+                window.location.reload()
+            })
+            .catch(err => console.log("SUBMIT ERROR", err))
+    }
+
+    const saveEdit = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .put(`//thread`)
+    }
     
 
     const removeQuestion = input => {
@@ -47,10 +58,11 @@ const QuestionsList = props => {
 
         // const trim = question.questions;
         axiosWithAuth()
-            .delete(`/${input.id}/thread`, question)
+            .delete(`/${input.id}/thread`)
             .then(res => {
                 console.log('DELETE IS WORKING', res)
-                setQuestion(question.filter(click => click.id !== input.id))
+                setQuestion(question.filter(click => 
+                    click.id !== input.id || question.id ))
             })
             .catch(err => console.log('DELETE ERROR', err.response))
     }
@@ -59,31 +71,76 @@ const QuestionsList = props => {
 
 
 
-    const changeHandler = e =>{
-        // console.log('change handler props', props)
-        props.setQuery(e.target.value)
+    // const changeHandler = e =>{
+    //     // console.log('change handler props', props)
+    //     props.setQuery(e.target.value)
+    // }
+    const handleChange = e => {
+        setList({...list, [e.target.name]: e.target.value});
     }
 
-    console.log("Question List props",props)
 
     return(
         <div className="questionListCont">
             <QuestionsForm question={question} setQuestion={setQuestion} list={list} setList={setList} handleSubmit={handleSubmit}/>
-            <span>
-               <SearchForm
-               changeHandler={changeHandler}
-               query={props.query} 
-               setQuery={props.setQuery}
-               /> 
-            </span>
+            <section className="editForm">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="title"></label>
+                        <input
+                        type="text"
+                        name="thread_title"
+                        placeholder="Title"
+                        onChange={handleChange}
+                        value={list.thread_title}
+                        />
+                    <label htmlFor="business-type"></label>
+                        <input
+                        type="text"
+                        name="business_type"
+                        id="business-type"
+                        placeholder="Business Type"
+                        onChange={handleChange}
+                        value={list.business_type}
+                        />                   
+                    <label htmlFor="question"></label>
+                        <input
+                        type ="textarea"
+                        name="thread_body"
+                        id="question"
+                        placeholder="Question"
+                        onChange={handleChange}
+                        value={list.thread_body}
+                        />
+                    {/* <label htmlFor="question"></label>
+                        <input
+                        type ="textarea"
+                        name="question"
+                        id="question"
+                        onChange={handleChange}
+                        value={thread.thread_body}
+                        /> */}
+                    <button>Edit Question</button>
+            </form>
+            </section>
+            {/* <span>
+            <SearchForm
+                changeHandler={changeHandler}
+                query={props.query} 
+                setQuery={props.setQuery}
+            /> 
+            </span> */}
             <section className="questionList">
                 {question.map(thing => {
                     // console.log('This is thing', thing)
                     return(
                         <div key={thing.id}>
-                            <Card key={thing.id} question={thing} />
+                            {/* <QuestionLink question={thing}/> */}
+                            <Card question={thing} />
                             <button onClick={() => removeQuestion(thing)}> 
                                 Remove Question
+                            </button>
+                            <button onClick={() => removeQuestion(thing)}> 
+                                Edit
                             </button>
                         </div>
                         // <QuestionLink 
@@ -100,7 +157,7 @@ const QuestionsList = props => {
 
 // function QuestionLink  ({question}, props){
 
-//     const {author_id, id,thread_title, thread_body} = question;
+//     const {business_type, id,thread_title, thread_body} = question;
 
 //     useEffect(() => {
 //         axiosWithAuth()
@@ -113,11 +170,12 @@ const QuestionsList = props => {
 //             <NavLink to ={`/questions/${id}`}>
 //                 <div>
 //                 <Card
-//                         authorId={author_id}
-//                         threadId={id}
-//                         title={thread_title}
-//                         content={thread_body}
-//                         />
+//                     // authorId={author_id}
+//                     id={id}
+//                     thread_title={thread_title}
+//                     thread_body={thread_body}
+//                     business_type={business_type}
+//                 />
 //                 </div>
 //             </NavLink>
 //             </div>

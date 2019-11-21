@@ -4,18 +4,23 @@ import { connect } from 'react-redux';
 
 import { addComment } from '../actions';
 
- import {fetchUserComment} from '../actions'
+ import {fetchThreadComments} from '../actions'
 
 const CommentForm = props => {
     const commentState = useSelector(state => state.commentTest);
     const dispatch = useDispatch()
     
+    const user_id = localStorage.getItem('user_id')
+    const parsed_id = parseInt(user_id, 10)
+
+
     const [comment, setComment] = useState({
         comment_text:'',
         thread_id: 2,
-        author_id: 4
+        author_id: parsed_id
     });
 
+    console.log('COMMENT', comment)
 
 
     const handleChange = e =>{
@@ -26,7 +31,7 @@ const CommentForm = props => {
     }
 
     useEffect(() => {
-        dispatch(fetchUserComment(3))
+        dispatch(fetchThreadComments())
     }, [])
 // if(!commentState){
 //     return <h2>LOADING</h2>

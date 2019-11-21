@@ -36,10 +36,10 @@ export const getQuestions = (questions) => dispatch => {
 //         .catch(err => console.log("Question Err", err))
 // }
 
-export const fetchUserComment = (id) => dispatch => {
+export const fetchThreadComments = (id) => dispatch => {
     dispatch({type: GET_COMMENT_START })
     axiosWithAuth()
-        .get(`/comments/${id}`)
+        .get(`/thread/${id}/comments`)
             .then(res => {
                 dispatch({ type: GET_COMMENT, payload: res.data})
             })
@@ -56,6 +56,7 @@ export const loginUser = (user, props) => dispatch => {
         .then(res => {
             console.log('Login Submit', res)
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user_id', res.data.user_id)
             props.history.push(`/mentor`)
             dispatch({type: LOGIN_SUCCESS, payload: "Logged In"})
         })
