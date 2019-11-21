@@ -2,7 +2,7 @@ import React,{useRef,useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import {TweenMax, Power3 } from "gsap/all"; 
 
-const Card = props => {
+const CommentCard = props => {
     let cardContent = useRef(null)
     console.log("Card Props", props)
     useEffect(() => {
@@ -11,20 +11,16 @@ const Card = props => {
             .8, {opacity: 100, y:20, ease: Power3.easeOut}
         )
     },[])
-
-    const trim = props.question;
     
 
     return(
-        <NavLink to = {`/questions/${trim.id}`}>
             <div className="card"  ref={el => cardContent = el}>
-                <section key={trim.id} >
-                    <h3>{trim.thread_title}</h3>
-                    <h4>{trim.business_type}</h4>
-                    <p>{trim.thread_body}</p>
+                <section key={props.id} >
+                    <h3>{props.thread_title}</h3>
+                    <h4>{props.business_type}</h4>
+                    <p>{props.thread_body}</p>
                 </section>
             </div>
-        </NavLink>
     )
 }
-export default Card;
+export default CommentCard;
