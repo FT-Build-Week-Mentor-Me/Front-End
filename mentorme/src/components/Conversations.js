@@ -4,7 +4,7 @@ import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 import { connect } from 'react-redux';
 
-import { fetchUserComment } from '../actions';
+import { fetchThreadComments } from '../actions';
 
 const Conversations = props => {
 
@@ -18,7 +18,7 @@ const Conversations = props => {
 
     useEffect(() => {
         console.log('convo effect', props)
-        props.fetchUserComment(3)
+        props.fetchThreadComments(props.match.params.id)
     }, [])
 
     console.log('PPID', props)
@@ -36,12 +36,15 @@ const Conversations = props => {
             </section> */}
             <section className="convoComments">
                 <Comments
-                comment_text={props.comment}
-                // id={commentThread.id}
+                    comment_text={props.comment_text}
+                    thread_id={props.thread_id}
+                    author_id={props.author_id}
                 />
             </section>
             <section>
-                <CommentForm/>
+                <CommentForm
+                
+                />
             </section>
 
         </div>
@@ -55,4 +58,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchUserComment })(Conversations);
+export default connect(mapStateToProps, { fetchThreadComments })(Conversations);
