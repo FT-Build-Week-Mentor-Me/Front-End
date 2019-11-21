@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils';
+import { connect } from 'react-redux';
 
 
 
 const Register = (props) => {
     // console.log(props)
-    const [input, setInput] = useState({
+    const [credentials, setCredentials] = useState({
         username:'',
         email: '',
         password: '',
+        profile_type: 'mentor'
+
     });
 
     const changeHandler = e => {
-        setInput({
-            ...input,
+        setCredentials({
+            ...credentials,
             [e.target.name]:e.target.value
         })
     }
 
     const submitRegister = e => {
         e.preventDefault();
+        console.log('input in submit', credentials)
         axiosWithAuth()
-            .post('/register', input)
+            .post('/register', credentials)
             .then(res => {
-                console.log('Register Submit', res.data.token)
-                localStorage.setItem('token', res.data.token)
-                props.history.push('/mentor')
+                console.log('Register Submit', res)
+                localStorage.setItem('username', res.data.username)
+                localStorage.setItem('password', res.data.password)
+                localStorage.setItem('email', res.data.email)
+                props.history.push('/')
             })
             .catch(err => console.log('Register Error', err))
     }
@@ -38,26 +44,29 @@ const Register = (props) => {
                     type="text"
                     name="username"
                     placeholder="Username"
-                    value={input.username}
+                    value={props.username}
                     onChange={changeHandler}
+                    required
                 />
                 <input
                     type="text"
                     name="email"
                     placeholder="Email"
-                    value={input.email}
+                    value={props.email}
                     onChange={changeHandler}
+                    required
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
-                    value={input.password}
+                    value={props.password}
                     onChange={changeHandler}
+                    required
                 />
                 <select>
-                    <option value="mentor">Mentor</option>
-                    <option value="mentee">Mentee</option>
+                    <option value={props.profile_type}>Mentor</option>
+                    <option value={props.profile_type}>Mentee</option>
                 </select> 
                 <button className="btn grey z-depth-0">Register</button>
             </form>
@@ -65,4 +74,15 @@ const Register = (props) => {
     )
 }
 
-export default Register;
+const mapStateToProps = state => {
+    return{
+        credentials: {
+            username: state.credentials.username,
+            email: state.credentials.email,
+            password: state.credentials.password,
+            profile_type: state.credentials.profile_type
+        } 
+    }
+}
+
+export default connect(mapStateToProps, {})(Register);
