@@ -67,7 +67,7 @@ const Register = (props) => {
                     <option value={props.profile_type}>Mentor</option>
                     <option value={props.profile_type}>Mentee</option>
                 </select> 
-                <button className="btn grey">Register</button>
+                <button className="btn">Register</button>
             </form>
         </div>
     )

@@ -44,7 +44,7 @@ const CommentForm = props => {
     }
 
     return(
-        <div>
+        <div className="container">
                 <form onSubmit={submitComment}>
                     <label htmlFor="comment"></label>
                     <input
@@ -54,7 +54,7 @@ const CommentForm = props => {
                         value={props.comment}
                         onChange={handleChange}
                     />
-                        <button>Submit</button>
+                        <button className="btn">Submit</button>
                 </form>
                 {commentState.map(comments => {
                     return (

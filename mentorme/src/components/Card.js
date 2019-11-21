@@ -17,7 +17,7 @@ const Card = props => {
 
     return(
         <NavLink to = {`/questions/${trim.id}`}>
-            <div className="card"  ref={el => cardContent = el}>
+            <div className="card grey text-white"  ref={el => cardContent = el}>
                 <section key={trim.id} >
                     <h3>{trim.thread_title}</h3>
                     <h4>{trim.business_type}</h4>

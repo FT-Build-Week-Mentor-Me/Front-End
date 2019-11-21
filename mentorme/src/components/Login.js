@@ -8,6 +8,7 @@ import { loginUser } from '../actions';
 
 
 
+
 const Login = (props) => {
     // console.log(props)
     const [input, setInput] = useState({
@@ -40,7 +41,7 @@ const Login = (props) => {
     return (
         <div className="container">
             <form onSubmit={submitLogin} className="white">
-                <h5 className="grey-text">Login</h5>
+                <h5 className="black-text">Login</h5>
                 <input
                     type="text"
                     name="username"
@@ -65,9 +66,9 @@ const Login = (props) => {
                     onChange={changeHandler}
                     required
                 />
-                <button className="btn grey">Login</button>
+                <button className="btn black">Login</button>
             </form>
-            <button className="btn grey white-text"> 
+            <button className="btn"> 
                 <Link to={"/register"}> Register With Us!</Link>
             </button>
         </div>
